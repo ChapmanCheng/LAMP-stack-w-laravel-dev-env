@@ -10,8 +10,8 @@ services:
       - 80:80
     volumes:
       - ./:/var/www/
-      - vendor:/var/www/app/vendor/
-      - node_modules:/var/www/app/node_modules/
+      # - vendor:/var/www/app/vendor/
+      # - node_modules:/var/www/app/node_modules/
     working_dir: /var/www/app
     depends_on:
       - db
@@ -20,7 +20,7 @@ services:
     image: composer
     volumes:
       - .:/var/www
-      - vendor:/var/www/app/vendor/
+      # - vendor:/var/www/app/vendor/
     working_dir: /var/www/app
     command: ["composer", "install", "--optimize-autoloader"]
     depends_on:
@@ -47,12 +47,12 @@ services:
     working_dir: /var/www/app/
     volumes:
       - ./:/var/www/
-      - node_modules:/var/www/app/node_modules/
+      # - node_modules:/var/www/app/node_modules/
     expose:
       - "8081"
     command: [npm, install]
 
 volumes:
   db_volume:
-  vendor:
-  node_modules:
+  # vendor:
+  # node_modules:
