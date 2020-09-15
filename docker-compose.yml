@@ -1,0 +1,48 @@
+version: "3.7"
+
+services:
+  web:
+    image: laravel_php
+    build:
+      context: .
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./:/var/www/
+      - vendor:/var/www/app/vendor/
+      - node_modules:/var/www/app/node_modules/
+    working_dir: /var/www/app
+    depends_on:
+      - db
+
+  composer:
+    image: composer
+    volumes:
+      - .:/var/www
+      - vendor:/var/www/app/vendor/
+    working_dir: /var/www/app
+    command: ["composer", "install", "--optimize-autoloader"]
+    depends_on:
+      - web
+
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    env_file: mysql_env
+    volumes:
+      - db_volume:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+
+volumes:
+  db_volume:
+  vendor:
+  node_modules:

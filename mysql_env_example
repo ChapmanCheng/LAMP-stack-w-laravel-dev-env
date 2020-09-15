@@ -1,0 +1,31 @@
+MYSQL_HOST=db
+MYSQL_PORT=3306
+
+# This variable is mandatory and specifies the password that will be set for the MySQL root superuser account.
+MYSQL_ROOT_PASSWORD=pass
+
+# {optioanl} specify the name of a database to be created on image startup.
+MYSQL_DATABASE=myDatabase
+
+# {optioanl} create a new user and to set that user's password. 
+MYSQL_USER=user
+MYSQL_PASSWORD=1234
+
+# {optioanl} non-empty value, like yes, 
+# to allow the container to be started with a blank password for the root user.
+MYSQL_ALLOW_EMPTY_PASSWORD=
+
+# {optioanl} non-empty value, like yes, 
+# to generate a random initial password for the root user
+MYSQL_RANDOM_ROOT_PASSWORD=
+
+# set root user as expired once init is complete,
+# forcing a password change on first login
+# MYSQL_ONETIME_PASSWORD
+
+# By default, the entrypoint script automatically loads 
+# the timezone data needed for the CONVERT_TZ() function. 
+# If it is not needed, any non-empty value disables timezone loading.
+# MYSQL_INITDB_SKIP_TZINFO
+
+
