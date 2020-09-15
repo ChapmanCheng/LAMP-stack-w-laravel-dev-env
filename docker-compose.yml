@@ -42,6 +42,16 @@ services:
     depends_on:
       - db
 
+  node:
+    image: node
+    working_dir: /var/www/app/
+    volumes:
+      - ./:/var/www/
+      - node_modules:/var/www/app/node_modules/
+    expose:
+      - "8081"
+    command: [npm, install]
+
 volumes:
   db_volume:
   vendor:
