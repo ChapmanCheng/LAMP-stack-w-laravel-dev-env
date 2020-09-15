@@ -11,6 +11,8 @@
 ### **RUN**
 
 ```
+cp mysql_env_example mysql_env;
+
 composer create-project --prefer-dist laravel/laravel app [ "^7.0" ];
 
 chmod --recursive 777 app/storage;
